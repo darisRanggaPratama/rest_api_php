@@ -63,34 +63,42 @@ $(document).ready(function () {
 
         // Fetch member data
         $.ajax({
-            url: 'ajax_handler.php?action=get&id=' + id,
+            url: 'ajax_handler.php',
             method: 'GET',
+            data: {
+                action: 'get',
+                id: id
+            },
             dataType: 'json',
             success: function(data) {
-                // Populate form fields
-                $('#edit-title').val(data.title);
-                $('#edit-release-date').val(data.release_at);
-                $('#edit-summary').val(data.summary);
-                $('#edit-id').val(data.id);
+                if (data) {
+                    // Populate form fields
+                    $('#editModal #edit-id').val(data.id);
+                    $('#editModal #edit-title').val(data.title);
+                    $('#editModal #edit-release-date').val(data.release_at);
+                    $('#editModal #edit-summary').val(data.summary);
 
-                // Show current image if exists
-                if (data.image) {
-                    $('#current-image').html(`
-                        <div class="mb-2">
-                            <label>Current Image:</label>
-                            <img src="${data.image}" height="50" class="d-block">
-                        </div>
-                    `);
+                    // Show current image if exists
+                    if (data.image) {
+                        $('#editModal #current-image').html(`
+                            <div class="mb-2">
+                                <label>Current Image:</label>
+                                <img src="${data.image}" height="50" class="d-block">
+                            </div>
+                        `);
+                    } else {
+                        $('#editModal #current-image').html('No current image');
+                    }
+
+                    // Show modal
+                    $('#editModal').modal('show');
                 } else {
-                    $('#current-image').html('No current image');
+                    alert('Error: Member data not found');
                 }
-
-                // Show modal
-                $('#editModal').modal('show');
             },
-            error: function(xhr) {
-                console.error('Get member error:', xhr);
-                alert('Error loading member data');
+            error: function(xhr, status, error) {
+                console.error('Get member error:', error);
+                alert('Error loading member data: ' + error);
             }
         });
     };
@@ -100,9 +108,10 @@ $(document).ready(function () {
         e.preventDefault();
 
         let formData = new FormData(this);
+        formData.append('action', 'update');
 
         $.ajax({
-            url: 'ajax_handler.php?action=update',
+            url: 'ajax_handler.php',
             method: 'POST',
             data: formData,
             processData: false,
@@ -113,24 +122,32 @@ $(document).ready(function () {
                 alert('Member updated successfully!');
             },
             error: function(xhr) {
-                alert('Error updating member: ' + xhr.responseText);
+                alert('Error updating member: ' + (xhr.responseText || 'Unknown error'));
             }
         });
     });
 
     // Delete member function
     window.deleteMember = function(id) {
+        if (!id) {
+            alert('Error: Invalid member ID');
+            return;
+        }
+
         if (confirm('Are you sure you want to delete this member?')) {
             $.ajax({
-                url: 'ajax_handler.php?action=delete',
+                url: 'ajax_handler.php',
                 method: 'POST',
-                data: {id: id},
+                data: {
+                    action: 'delete',
+                    id: id
+                },
                 success: function(response) {
                     table.ajax.reload();
                     alert('Member deleted successfully!');
                 },
                 error: function(xhr) {
-                    alert('Error deleting member');
+                    alert('Error deleting member: ' + (xhr.responseText || 'Unknown error'));
                 }
             });
         }
@@ -141,9 +158,10 @@ $(document).ready(function () {
         e.preventDefault();
 
         let formData = new FormData(this);
+        formData.append('action', 'create');
 
         $.ajax({
-            url: 'ajax_handler.php?action=create',
+            url: 'ajax_handler.php',
             method: 'POST',
             data: formData,
             processData: false,
@@ -155,7 +173,7 @@ $(document).ready(function () {
                 $('#addForm')[0].reset();
             },
             error: function(xhr) {
-                alert('Error adding member: ' + xhr.responseText);
+                alert('Error adding member: ' + (xhr.responseText || 'Unknown error'));
             }
         });
     });
@@ -165,9 +183,10 @@ $(document).ready(function () {
         e.preventDefault();
 
         let formData = new FormData(this);
+        formData.append('action', 'import');
 
         $.ajax({
-            url: 'ajax_handler.php?action=import',
+            url: 'ajax_handler.php',
             method: 'POST',
             data: formData,
             processData: false,
@@ -179,7 +198,7 @@ $(document).ready(function () {
                 $('#importForm')[0].reset();
             },
             error: function(xhr) {
-                alert('Error importing data: ' + xhr.responseText);
+                alert('Error importing data: ' + (xhr.responseText || 'Unknown error'));
             }
         });
     });
