@@ -1,0 +1,17 @@
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.modal-dialog {
+    max-width: 600px;
+}
+
+#membersTable img {
+    max-width: 100px;
+    height: auto;
+}
+
+.action-buttons button {
+    margin-right: 5px;
+}
