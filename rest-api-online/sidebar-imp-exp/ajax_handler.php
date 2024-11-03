@@ -60,14 +60,38 @@ switch($action) {
                 throw new Exception("Empty CSV file");
             }
 
-            // Remove header row
+            // Remove header row and normalize it
             $header = array_shift($csv);
+            $header = array_map(function($column) {
+                // Convert to lowercase and remove special characters
+                $column = strtolower(trim($column));
+                $column = preg_replace('/[^a-z0-9_]/', '', $column);
+                return $column;
+            }, $header);
 
-            // Validate header structure
-            $required_columns = ['title', 'image', 'release_at', 'summary'];
-            $header = array_map('trim', $header); // Trim whitespace from headers
-            if(count(array_intersect($header, $required_columns)) !== count($required_columns)) {
-                throw new Exception("CSV header must contain: title, image, release_at, summary");
+            // Map common variations of column names
+            $header_mapping = [
+                'title' => ['title', 'name', 'membertitle', 'membername'],
+                'image' => ['image', 'img', 'picture', 'photo', 'imageurl'],
+                'release_at' => ['release_at', 'releasedate', 'date', 'release'],
+                'summary' => ['summary', 'description', 'desc', 'content']
+            ];
+
+            // Find column indexes for required fields
+            $column_indexes = [];
+            foreach($header_mapping as $required_column => $variations) {
+                $found = false;
+                foreach($variations as $variation) {
+                    $index = array_search($variation, $header);
+                    if($index !== false) {
+                        $column_indexes[$required_column] = $index;
+                        $found = true;
+                        break;
+                    }
+                }
+                if(!$found) {
+                    throw new Exception("Required column '$required_column' not found in CSV. Acceptable headers: " . implode(', ', $variations));
+                }
             }
 
             $stmt = $pdo->prepare("INSERT INTO members (title, image, release_at, summary) VALUES (?, ?, ?, ?)");
@@ -81,18 +105,19 @@ switch($action) {
                 // Trim whitespace from all fields
                 $row = array_map('trim', $row);
 
-                // Validate required fields
-                if(!isset($row[0]) || !isset($row[2])) {
-                    throw new Exception("Row " . ($row_index + 2) . ": Missing required fields");
-                }
+                // Get values using mapped indexes
+                $title = $row[$column_indexes['title']] ?? '';
+                $image = $row[$column_indexes['image']] ?? '';
+                $release_at = $row[$column_indexes['release_at']] ?? '';
+                $summary = $row[$column_indexes['summary']] ?? '';
 
                 // Validate title length
-                if(strlen($row[0]) > 255) {
+                if(strlen($title) > 255) {
                     throw new Exception("Row " . ($row_index + 2) . ": Title exceeds 255 characters");
                 }
 
                 // Parse and validate date
-                $date = trim($row[2]);
+                $date = trim($release_at);
                 $parsed_date = null;
 
                 // Try different date formats
@@ -110,14 +135,14 @@ switch($action) {
                 }
 
                 if($parsed_date === false) {
-                    throw new Exception("Row " . ($row_index + 2) . ": Invalid date format. Use DD/MM/YYYY, MM/DD/YYYY, or YYYY-MM-DD");
+                    throw new Exception("Row " . ($row_index + 2) . ": Invalid date format in '$date'. Use DD/MM/YYYY, MM/DD/YYYY, or YYYY-MM-DD");
                 }
 
                 $stmt->execute([
-                    $row[0], // title
-                    $row[1] ?? '', // image
-                    $parsed_date->format('Y-m-d'), // formatted release_at
-                    $row[3] ?? ''  // summary
+                    $title,
+                    $image,
+                    $parsed_date->format('Y-m-d'),
+                    $summary
                 ]);
             }
             echo "success";

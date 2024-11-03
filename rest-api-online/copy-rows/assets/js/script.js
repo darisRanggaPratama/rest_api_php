@@ -1,4 +1,4 @@
-// assets/js/script.js
+// assets/js/scripts.js
 $(document).ready(function() {
     // Initialize DataTable
     var table = $('#membersTable').DataTable({

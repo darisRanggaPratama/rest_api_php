@@ -1,6 +1,6 @@
 $(document).ready(function() {
-    // Inisialisasi DataTable
-    let membersTable = $('#membersTable').DataTable({
+    // Initialize DataTable
+    var table = $('#membersTable').DataTable({
         ajax: {
             url: 'ajax_handler.php?action=list',
             dataSrc: ''
@@ -11,7 +11,7 @@ $(document).ready(function() {
             {
                 data: 'image',
                 render: function(data) {
-                    return data ? `<img src="${data}" alt="Member Image" style="height:50px;">` : 'No Image';
+                    return `<img src="${data}" height="50">`;
                 }
             },
             {
@@ -23,110 +23,68 @@ $(document).ready(function() {
             { data: 'summary' },
             {
                 data: null,
-                orderable: false,
                 render: function(data) {
                     return `
-                        <button onclick="editMember(${data.id})" class="btn btn-sm btn-warning">
-                            <i class="fas fa-edit"></i> Edit
-                        </button>
-                        <button onclick="deleteMember(${data.id})" class="btn btn-sm btn-danger">
-                            <i class="fas fa-trash"></i> Delete
-                        </button>
+                        <button class="btn btn-sm btn-primary btn-action" onclick="editMember(${data.id})">Edit</button>
+                        <button class="btn btn-sm btn-danger btn-action" onclick="deleteMember(${data.id})">Delete</button>
                     `;
                 }
             }
         ],
         dom: 'Bfrtip',
         buttons: [
+            'excel',
             {
-                text: '<i class="fas fa-plus"></i> Add New',
-                className: 'btn btn-success',
-                action: function() {
-                    $('#addModal').modal('show');
-                }
-            },
-            {
-                text: '<i class="fas fa-file-import"></i> Import CSV',
-                className: 'btn btn-info',
+                text: 'Import CSV',
                 action: function() {
                     $('#importModal').modal('show');
                 }
             },
             {
-                extend: 'excel',
-                text: '<i class="fas fa-file-excel"></i> Export Excel',
-                className: 'btn btn-primary',
-                title: 'Members Data'
+                text: 'Add New',
+                action: function() {
+                    $('#addModal').modal('show');
+                }
             }
-        ],
-        responsive: true,
-        order: [[0, 'desc']]
+        ]
     });
 
-    // Handle Add Form Submit
+    // Handle form submission for adding new member
     $('#addForm').on('submit', function(e) {
         e.preventDefault();
-        let formData = new FormData(this);
-
         $.ajax({
             url: 'ajax_handler.php?action=create',
-            type: 'POST',
-            data: formData,
-            contentType: false,
+            method: 'POST',
+            data: new FormData(this),
             processData: false,
+            contentType: false,
             success: function(response) {
                 $('#addModal').modal('hide');
-                $('#addForm')[0].reset();
-                membersTable.ajax.reload();
-                showAlert('Success', 'Member added successfully!', 'success');
+                table.ajax.reload();
+                alert('Member added successfully!');
             },
             error: function(xhr) {
-                showAlert('Error', xhr.responseText, 'error');
+                alert('Error: ' + xhr.responseText);
             }
         });
     });
 
-    // Handle Edit Form Submit
-    $('#editForm').on('submit', function(e) {
-        e.preventDefault();
-        let formData = new FormData(this);
-
-        $.ajax({
-            url: 'ajax_handler.php?action=update',
-            type: 'POST',
-            data: formData,
-            contentType: false,
-            processData: false,
-            success: function(response) {
-                $('#editModal').modal('hide');
-                membersTable.ajax.reload();
-                showAlert('Success', 'Member updated successfully!', 'success');
-            },
-            error: function(xhr) {
-                showAlert('Error', xhr.responseText, 'error');
-            }
-        });
-    });
-
-    // Handle Import Form Submit
+    // Handle CSV import
     $('#importForm').on('submit', function(e) {
         e.preventDefault();
-        let formData = new FormData(this);
-
         $.ajax({
             url: 'ajax_handler.php?action=import',
-            type: 'POST',
-            data: formData,
-            contentType: false,
+            method: 'POST',
+            data: new FormData(this),
             processData: false,
+            contentType: false,
             success: function(response) {
                 $('#importModal').modal('hide');
-                $('#importForm')[0].reset();
-                membersTable.ajax.reload();
-                showAlert('Success', 'Data imported successfully!', 'success');
+                table.ajax.reload();
+                alert('Data imported successfully!');
             },
             error: function(xhr) {
-                showAlert('Error', xhr.responseText, 'error');
+                alert('Error: ' + xhr.responseText);
             }
         });
     });
@@ -134,61 +92,40 @@ $(document).ready(function() {
 
 // Function to edit member
 function editMember(id) {
-    $.ajax({
-        url: 'ajax_handler.php?action=get&id=' + id,
-        type: 'GET',
-        success: function(response) {
-            let data = JSON.parse(response);
-            $('#editId').val(data.id);
-            $('#editTitle').val(data.title);
-            $('#editReleaseAt').val(data.release_at);
-            $('#editSummary').val(data.summary);
-            $('#editModal').modal('show');
-        },
-        error: function(xhr) {
-            showAlert('Error', xhr.responseText, 'error');
-        }
+    $.get('ajax_handler.php?action=get&id=' + id, function(data) {
+        $('#editId').val(data.id);
+        $('#editTitle').val(data.title);
+        $('#editReleaseAt').val(data.release_at);
+        $('#editSummary').val(data.summary);
+        $('#editModal').modal('show');
     });
 }
 
 // Function to delete member
 function deleteMember(id) {
     if(confirm('Are you sure you want to delete this member?')) {
-        $.ajax({
-            url: 'ajax_handler.php?action=delete',
-            type: 'POST',
-            data: { id: id },
-            success: function(response) {
-                $('#membersTable').DataTable().ajax.reload();
-                showAlert('Success', 'Member deleted successfully!', 'success');
-            },
-            error: function(xhr) {
-                showAlert('Error', xhr.responseText, 'error');
-            }
+        $.post('ajax_handler.php?action=delete', {id: id}, function() {
+            $('#membersTable').DataTable().ajax.reload();
         });
     }
 }
 
-// Function to show alerts
-function showAlert(title, message, type) {
-    let alertClass = type === 'success' ? 'alert-success' : 'alert-danger';
-    let alertHtml = `
-        <div class="alert ${alertClass} alert-dismissible fade show" role="alert">
-            <strong>${title}!</strong> ${message}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    `;
-
-    // Remove existing alerts
-    $('.alert').remove();
-
-    // Add new alert
-    $('.main-content').prepend(alertHtml);
-
-    // Auto hide after 3 seconds
-    setTimeout(function() {
-        $('.alert').fadeOut('slow', function() {
-            $(this).remove();
-        });
-    }, 3000);
-}
+// Handle edit form submission
+$('#editForm').on('submit', function(e) {
+    e.preventDefault();
+    $.ajax({
+        url: 'ajax_handler.php?action=update',
+        method: 'POST',
+        data: new FormData(this),
+        processData: false,
+        contentType: false,
+        success: function(response) {
+            $('#editModal').modal('hide');
+            $('#membersTable').DataTable().ajax.reload();
+            alert('Member updated successfully!');
+        },
+        error: function(xhr) {
+            alert('Error: ' + xhr.responseText);
+        }
+    });
+});
