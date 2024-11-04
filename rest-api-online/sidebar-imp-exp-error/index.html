@@ -116,7 +116,12 @@
                     <input type="hidden" id="edit-id" name="id">
                     <div class="mb-3">
                         <label for="edit-title" class="form-label">Title</label>
-                        <input type="text" class="form-control" id="edit-title" name="title" required>
+                        <input type="text"
+                               class="form-control"
+                               id="edit-title"
+                               name="title"
+                               maxlength="255"
+                               required>
                     </div>
                     <div class="mb-3">
                         <label for="edit-image" class="form-label">Image URL</label>
@@ -132,11 +137,19 @@
                     </div>
                     <div class="mb-3">
                         <label for="edit-release-date" class="form-label">Release Date</label>
-                        <input type="date" class="form-control" id="edit-release-date" name="release_at" required>
+                        <input type="date"
+                               class="form-control"
+                               id="edit-release-date"
+                               name="release_at"
+                               required>
                     </div>
                     <div class="mb-3">
                         <label for="edit-summary" class="form-label">Summary</label>
-                        <textarea class="form-control" id="edit-summary" name="summary" rows="3"></textarea>
+                        <textarea class="form-control"
+                                  id="edit-summary"
+                                  name="summary"
+                                  rows="3"
+                                  required></textarea>
                     </div>
                 </div>
                 <div class="modal-footer">

@@ -54,10 +54,10 @@ $(document).ready(function () {
         ]
     });
 
-    // Function to edit member
+    // Function untuk edit member
     window.editMember = function(id) {
         if (!id) {
-            alert('Error: Invalid member ID');
+            console.error('Error: Member ID is required');
             return;
         }
 
@@ -73,21 +73,24 @@ $(document).ready(function () {
             success: function(data) {
                 if (data) {
                     // Populate form fields
-                    $('#editModal #edit-id').val(data.id);
-                    $('#editModal #edit-title').val(data.title);
-                    $('#editModal #edit-release-date').val(data.release_at);
-                    $('#editModal #edit-summary').val(data.summary);
+                    $('#edit-id').val(data.id);
+                    $('#edit-title').val(data.title);
+                    $('#edit-release-date').val(data.release_at);
+                    $('#edit-summary').val(data.summary);
 
                     // Show current image if exists
                     if (data.image) {
-                        $('#editModal #current-image').html(`
-                            <div class="mb-2">
-                                <label>Current Image:</label>
-                                <img src="${data.image}" height="50" class="d-block">
-                            </div>
-                        `);
+                        $('#current-image').html(`
+                        <div class="mb-2">
+                            <label class="form-label">Current Image:</label>
+                            <img src="${data.image}" 
+                                 class="d-block img-thumbnail" 
+                                 style="max-height: 150px;"
+                                 alt="Current image">
+                        </div>
+                    `);
                     } else {
-                        $('#editModal #current-image').html('No current image');
+                        $('#current-image').html('<p class="text-muted">No current image</p>');
                     }
 
                     // Show modal
@@ -97,13 +100,13 @@ $(document).ready(function () {
                 }
             },
             error: function(xhr, status, error) {
-                console.error('Get member error:', error);
-                alert('Error loading member data: ' + error);
+                console.error('AJAX Error:', error);
+                alert('Error loading member data. Please try again.');
             }
         });
     };
 
-    // Handle edit form submission
+// Handle edit form submission
     $('#editForm').on('submit', function(e) {
         e.preventDefault();
 
@@ -117,14 +120,25 @@ $(document).ready(function () {
             processData: false,
             contentType: false,
             success: function(response) {
-                $('#editModal').modal('hide');
-                table.ajax.reload();
-                alert('Member updated successfully!');
+                if (response.success) {
+                    $('#editModal').modal('hide');
+                    $('#membersTable').DataTable().ajax.reload();
+                    alert('Member updated successfully!');
+                } else {
+                    alert('Error updating member: ' + (response.message || 'Unknown error'));
+                }
             },
-            error: function(xhr) {
-                alert('Error updating member: ' + (xhr.responseText || 'Unknown error'));
+            error: function(xhr, status, error) {
+                console.error('AJAX Error:', error);
+                alert('Error updating member. Please try again.');
             }
         });
+    });
+
+// Reset form when modal is closed
+    $('#editModal').on('hidden.bs.modal', function() {
+        $('#editForm')[0].reset();
+        $('#current-image').html('');
     });
 
     // Delete member function
