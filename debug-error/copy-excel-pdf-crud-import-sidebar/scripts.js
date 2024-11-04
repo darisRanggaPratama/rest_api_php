@@ -64,8 +64,8 @@ $(document).ready(function() {
         processing: true,
         pageLength: 10,
         lengthMenu: [[1, 5, 10, 25, 50, -1], [1, 5, 10, 25, 50, "Semua"]], // Custom length menu options
-      // dom: '<"row"<"col-md-6"l><"col-md-6"f>>rtip', // Repositions length menu and search
-       dom: 'Bfrtip',
+       dom: '<"row"<"col-md-6"l><"col-md-6"f>>rtip', // Repositions length menu and search
+       // dom: 'Bfrtip',
         select: true,
         buttons: [
             {

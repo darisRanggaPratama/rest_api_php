@@ -5,26 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9ff74d86-7106-4298-9619-67d63ea9cd81" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/copy-excel-pdf-crud-import-sidebar/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/copy-excel-pdf-crud-import-sidebar/.idea/copy-excel-pdf-crud-import-sidebar.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/copy-excel-pdf-crud-import-sidebar/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/copy-excel-pdf-crud-import-sidebar/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/copy-excel-pdf-crud-import-sidebar/connects.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/copy-excel-pdf-crud-import-sidebar/data.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/copy-excel-pdf-crud-import-sidebar/import.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/copy-excel-pdf-crud-import-sidebar/index.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/copy-excel-pdf-crud-import-sidebar/operations.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/copy-excel-pdf-crud-import-sidebar/script.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/copy-excel-pdf-crud-import-sidebar/sidebar-close.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/copy-excel-pdf-crud-import-sidebar/sidebar-open.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/copy-excel-pdf-crud-import-sidebar/sidebar.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/copy-excel-pdf-crud-import-sidebar/test.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/copy-excel-pdf-crud-import-sidebar/white-close.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/copy-excel-pdf-crud-import-sidebar/white-open.webp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1d1b342b-40ec-49ea-97b8-5ef780502d40.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/1d1b342b-40ec-49ea-97b8-5ef780502d40.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/copy-excel-pdf-crud-import-sidebar/indexs.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/copy-excel-pdf-crud-import-sidebar/scripts.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/copy-excel-pdf-crud-import/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/copy-excel-pdf-crud-import/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/copy-excel-pdf-crud-import-sidebar/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/copy-excel-pdf-crud-import-sidebar/script.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,7 +87,7 @@
       <updated>1730689804854</updated>
       <workItem from="1730689805999" duration="2183000" />
       <workItem from="1730692030359" duration="7853000" />
-      <workItem from="1730752339890" duration="5231000" />
+      <workItem from="1730752339890" duration="6472000" />
     </task>
     <servers />
   </component>
