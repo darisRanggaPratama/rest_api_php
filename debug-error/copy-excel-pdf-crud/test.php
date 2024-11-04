@@ -1,5 +1,5 @@
 <?php
-require_once 'connect-s.php';
+require_once 'connects.php';
 try {
     $result = $connect->query("SELECT 1");
     echo "Koneksi database berhasil!";

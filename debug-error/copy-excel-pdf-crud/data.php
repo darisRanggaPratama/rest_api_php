@@ -14,7 +14,7 @@ header('Cache-Control: no-cache, must-revalidate');
 
 try {
     // Include database connection
-    require_once 'connect-s.php';
+    require_once 'connects.php';
 
     // Cek koneksi
     if (!isset($connect)) {
