@@ -5,8 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9ff74d86-7106-4298-9619-67d63ea9cd81" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../rest-api-online/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../rest-api-online/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/copy-excel-pdf-crud-import/connects.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/copy-excel-pdf-crud-import/data.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/copy-excel-pdf-crud-import/import.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/copy-excel-pdf-crud-import/index.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/copy-excel-pdf-crud-import/operations.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/copy-excel-pdf-crud-import/script.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/copy-excel-pdf-crud-import/test.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,15 +21,22 @@
   <component name="ComposerSettings">
     <execution />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP" />
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 8
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
   <component name="ProjectId" id="2oMqU8iIJaVzeGlJlKBooQXZUx1" />
-  <component name="ProjectLevelVcsManager">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
@@ -39,12 +51,13 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/laragon/www/rest_api_php/debug-error/copy-excel-pdf",
+    "last_opened_file_path": "C:/laragon/www/rest_api_php/debug-error/copy-excel-pdf-crud-import",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -53,6 +66,11 @@
     ]
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\laragon\www\rest_api_php\debug-error\copy-excel-pdf-crud-import" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -69,6 +87,7 @@
       <option name="presentableId" value="Default" />
       <updated>1730689804854</updated>
       <workItem from="1730689805999" duration="2183000" />
+      <workItem from="1730692030359" duration="7853000" />
     </task>
     <servers />
   </component>
@@ -77,5 +96,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/../.." />
+    </ignored-roots>
   </component>
 </project>

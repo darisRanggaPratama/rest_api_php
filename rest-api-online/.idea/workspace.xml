@@ -5,8 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="46d0e1e9-ec84-42fe-bb1d-916512f6142e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../debug-error/copy-excel-pdf/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../debug-error/copy-excel-pdf/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../debug-error/copy-excel-pdf-crud-import/connects.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../debug-error/copy-excel-pdf-crud-import/data.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../debug-error/copy-excel-pdf-crud-import/import.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../debug-error/copy-excel-pdf-crud-import/index.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../debug-error/copy-excel-pdf-crud-import/operations.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../debug-error/copy-excel-pdf-crud-import/script.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../debug-error/copy-excel-pdf-crud-import/test.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../debug-error/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../debug-error/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../debug-error/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../debug-error/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../debug-error/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../debug-error/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +56,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/laragon/www/rest_api_php/debug-error/copy-excel-pdf",
+    "last_opened_file_path": "C:/laragon/www/rest_api_php/debug-error",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -74,7 +82,7 @@
       <updated>1730535104103</updated>
       <workItem from="1730535105169" duration="521000" />
       <workItem from="1730640703171" duration="1212000" />
-      <workItem from="1730687582029" duration="3418000" />
+      <workItem from="1730687582029" duration="4616000" />
     </task>
     <servers />
   </component>
