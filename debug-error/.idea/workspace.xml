@@ -5,7 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9ff74d86-7106-4298-9619-67d63ea9cd81" name="Changes" comment="">
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/1d1b342b-40ec-49ea-97b8-5ef780502d40.xml" beforeDir="false" />
+=======
+      <change afterPath="$PROJECT_DIR$/copy-excel-pdf-crud-import-sidebar/indexs.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/copy-excel-pdf-crud-import-sidebar/scripts.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/copy-excel-pdf-crud-import-sidebar/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/copy-excel-pdf-crud-import-sidebar/script.js" afterDir="false" />
+>>>>>>> 7dafd4302dfa0dafd8731aed66a039185c4d5eb8
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +91,7 @@
       <updated>1730689804854</updated>
       <workItem from="1730689805999" duration="2183000" />
       <workItem from="1730692030359" duration="7853000" />
-      <workItem from="1730752339890" duration="5231000" />
+      <workItem from="1730752339890" duration="6472000" />
     </task>
     <servers />
   </component>
