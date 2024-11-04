@@ -4,20 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="46d0e1e9-ec84-42fe-bb1d-916512f6142e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../debug-error/copy-excel-pdf/.idea/copy-excel-pdf.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../debug-error/copy-excel-pdf/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../debug-error/copy-excel-pdf/.idea/php.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../debug-error/copy-excel-pdf/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../debug-error/copy-excel-pdf/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../debug-error/copy-excel-pdf/connects.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../debug-error/copy-excel-pdf/data.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../debug-error/copy-excel-pdf/index.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../debug-error/copy-excel-pdf/script.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../debug-error/copy-excel-pdf/test.php" afterDir="false" />
+    <list default="true" id="9ff74d86-7106-4298-9619-67d63ea9cd81" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/copy-excel-pdf.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/connects.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/script.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rest-api-online/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../rest-api-online/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../rest-api-online/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../rest-api-online/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/../../rest-api-online/index.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,22 +27,14 @@
   <component name="ComposerSettings">
     <execution />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="JavaScript File" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP" />
-  <component name="ProjectColorInfo">{
-  &quot;customColor&quot;: &quot;&quot;,
-  &quot;associatedIndex&quot;: 6
-}</component>
-  <component name="ProjectId" id="2oHmvD36l62dbNKPgATnEOvjt7R" />
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 8
+}]]></component>
+  <component name="ProjectId" id="2oMqU8iIJaVzeGlJlKBooQXZUx1" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
@@ -66,6 +58,11 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
+    ]
   }
 }]]></component>
   <component name="SharedIndexes">
@@ -78,14 +75,12 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="46d0e1e9-ec84-42fe-bb1d-916512f6142e" name="Changes" comment="" />
-      <created>1730535104103</created>
+      <changelist id="9ff74d86-7106-4298-9619-67d63ea9cd81" name="Changes" comment="" />
+      <created>1730689804854</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1730535104103</updated>
-      <workItem from="1730535105169" duration="521000" />
-      <workItem from="1730640703171" duration="1212000" />
-      <workItem from="1730687582029" duration="3020000" />
+      <updated>1730689804854</updated>
+      <workItem from="1730689805999" duration="1484000" />
     </task>
     <servers />
   </component>
