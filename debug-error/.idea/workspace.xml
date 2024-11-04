@@ -5,13 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9ff74d86-7106-4298-9619-67d63ea9cd81" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/copy-excel-pdf-crud-import/connects.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/copy-excel-pdf-crud-import/data.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/copy-excel-pdf-crud-import/import.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/copy-excel-pdf-crud-import/index.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/copy-excel-pdf-crud-import/operations.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/copy-excel-pdf-crud-import/script.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/copy-excel-pdf-crud-import/test.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/copy-excel-pdf-crud-import-sidebar/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/copy-excel-pdf-crud-import-sidebar/.idea/copy-excel-pdf-crud-import-sidebar.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/copy-excel-pdf-crud-import-sidebar/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/copy-excel-pdf-crud-import-sidebar/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/copy-excel-pdf-crud-import-sidebar/connects.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/copy-excel-pdf-crud-import-sidebar/data.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/copy-excel-pdf-crud-import-sidebar/import.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/copy-excel-pdf-crud-import-sidebar/index.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/copy-excel-pdf-crud-import-sidebar/operations.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/copy-excel-pdf-crud-import-sidebar/script.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/copy-excel-pdf-crud-import-sidebar/sidebar-close.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/copy-excel-pdf-crud-import-sidebar/sidebar-open.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/copy-excel-pdf-crud-import-sidebar/sidebar.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/copy-excel-pdf-crud-import-sidebar/test.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/copy-excel-pdf-crud-import-sidebar/white-close.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/copy-excel-pdf-crud-import-sidebar/white-open.webp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1d1b342b-40ec-49ea-97b8-5ef780502d40.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/1d1b342b-40ec-49ea-97b8-5ef780502d40.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/copy-excel-pdf-crud-import/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/copy-excel-pdf-crud-import/index.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,13 +64,13 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/laragon/www/rest_api_php/debug-error/copy-excel-pdf-crud-import",
+    "last_opened_file_path": "/Applications/XAMPP/xamppfiles/htdocs/rest_api_php/debug-error/copy-excel-pdf-crud-import-sidebar",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -68,13 +81,15 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/copy-excel-pdf-crud-import-sidebar" />
       <recent name="C:\laragon\www\rest_api_php\debug-error\copy-excel-pdf-crud-import" />
     </key>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-php-predefined-ba97393d7c68-6f8e3395a2b4-com.jetbrains.php.sharedIndexes-PS-233.15026.12" />
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-PS-241.17890.8" />
+        <option value="bundled-php-predefined-ba97393d7c68-48a1a656d44e-com.jetbrains.php.sharedIndexes-PS-241.17890.8" />
       </set>
     </attachedChunks>
   </component>
@@ -88,6 +103,7 @@
       <updated>1730689804854</updated>
       <workItem from="1730689805999" duration="2183000" />
       <workItem from="1730692030359" duration="7853000" />
+      <workItem from="1730752339890" duration="5231000" />
     </task>
     <servers />
   </component>
@@ -99,5 +115,9 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/../.." />
     </ignored-roots>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
