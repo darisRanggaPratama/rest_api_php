@@ -11,6 +11,7 @@
     <link href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.bootstrap5.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.bootstrap5.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/select/1.7.0/css/select.bootstrap5.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
     <!-- JavaScript -->
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
@@ -43,38 +44,56 @@
             opacity: 0.6;
             cursor: not-allowed;
         }
+
+        /* Add margin for main content */
+        .main-content {
+            margin-left: 20px;
+            margin-right: 20px;
+            padding-top: 20px;
+        }
+
+        /* Custom length menu styling */
+        .dataTables_length select {
+            min-width: 70px;
+        }
     </style>
 </head>
 <body>
-<div class="container mt-5">
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2>Data Avengers</h2>
-        <div class="d-flex justify-content-between align-items-right mb-4">
-            <button type="button" class="btn btn-success me-2" data-bs-toggle="modal" data-bs-target="#importModal">
-                Import CSV
-            </button>
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#formModal">
-                Tambah Data
-            </button>
+<!-- Include Sidebar -->
+<?php include 'sidebar.php'; ?>
+
+<!-- Main Content Wrapper -->
+<div class="content-wrapper">
+    <div class="main-content">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2>Data Avengers</h2>
+            <div class="d-flex gap-2">
+                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#importModal">
+                    Import CSV
+                </button>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#formModal">
+                    Tambah Data
+                </button>
+            </div>
         </div>
-    </div>
 
-    <div class="alert alert-info mb-3">
-        Klik baris untuk memilih data yang akan di-copy. Gunakan Ctrl/Cmd + klik untuk memilih multiple baris.
-    </div>
+        <div class="alert alert-info mb-3">
+            Klik baris untuk memilih data yang akan di-copy. Gunakan Ctrl/Cmd + klik untuk memilih multiple baris.
+        </div>
 
-    <table id="tabelData" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
-        <thead>
-        <tr>
-            <th>ID</th>
-            <th>Title</th>
-            <th>Image</th>
-            <th>Release</th>
-            <th>Summary</th>
-            <th>Actions</th>
-        </tr>
-        </thead>
-    </table>
+        <table id="tabelData" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Image</th>
+                <th>Release</th>
+                <th>Summary</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+        </table>
+    </div>
 </div>
 
 <!-- Modal Form -->
