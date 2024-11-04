@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="avengers@localhost">
+<<<<<<< HEAD
+  <database-model serializer="dbm" dbms="MYSQL" family-id="MYSQL" format-version="4.51">
+    <root id="1"/>
+=======
   <database-model serializer="dbm" dbms="MYSQL" family-id="MYSQL" format-version="4.52">
     <root id="1">
       <DefaultCasing>lower/lower</DefaultCasing>
@@ -159,6 +163,7 @@ performance_schema|schema||mysql.session|localhost|SELECT|G
 sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <ServerVersion>8.0.30</ServerVersion>
     </root>
+>>>>>>> 7963de920ff702401e02289ea47436c1e3f215d0
     <collation id="2" parent="1" name="armscii8_bin">
       <Charset>armscii8</Charset>
     </collation>
