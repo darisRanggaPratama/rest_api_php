@@ -27,7 +27,7 @@ $(document).ready(function() {
                 data: 'image',
                 render: function(data, type, row) {
                     if (type === 'display') {
-                        return data ? `<img src="${data}" alt="poster" style="max-height: 50px;" onerror="this.src='placeholder.jpg'">` : 'No Image';
+                        return data ? `<img src="${data}" alt="poster" style="max-height: 50px;">` : 'No Image';
                     }
                     return data;
                 }
@@ -194,5 +194,22 @@ $(document).ready(function() {
                 alert('Error: ' + error);
             }
         });
+    });
+
+    // Handle image preview
+    $('#image').on('change', function() {
+        let url = $(this).val();
+        if (url) {
+            $('<img>', {
+                src: url,
+                error: function() {
+                    alert('URL gambar tidak valid atau tidak dapat diakses');
+                    $('#image').val('');
+                },
+                load: function() {
+                    console.log('Image loaded successfully');
+                }
+            });
+        }
     });
 });

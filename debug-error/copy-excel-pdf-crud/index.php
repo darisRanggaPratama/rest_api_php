@@ -91,12 +91,12 @@
 
                     <div class="mb-3">
                         <label for="image" class="form-label">Image URL</label>
-                        <input type="url" class="form-control" id="image" name="image" required>
+                        <input type="url" class="form-control" id="image" name="image">
                     </div>
 
                     <div class="mb-3">
                         <label for="release_at" class="form-label">Release Date</label>
-                        <input type="date" class="form-control" id="release_at" name="release_at" required>
+                        <input type="date" class="form-control" id="release_at" name="release_at">
                     </div>
 
                     <div class="mb-3">

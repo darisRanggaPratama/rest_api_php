@@ -1,22 +1,27 @@
 <?php
-// Aktifkan error reporting
+// Nonaktifkan output error langsung ke browser
+ini_set('display_errors', 0);
 error_reporting(E_ALL);
-ini_set('display_errors', 1);
 
-// Set header
+// Fungsi untuk mencatat error ke log
+function logError($message) {
+    error_log($message);
+}
+
+// Set header JSON
 header('Content-Type: application/json');
 header('Cache-Control: no-cache, must-revalidate');
 
 try {
     // Include database connection
-    require_once 'connects.php';
+    require_once 'connect-s.php';
 
     // Cek koneksi
     if (!isset($connect)) {
         throw new Exception("Koneksi database tidak tersedia");
     }
 
-    // Debug: Cek apakah tabel exists
+    // Cek apakah tabel exists
     $tables = $connect->query("SHOW TABLES LIKE 'members'")->fetchAll();
     if (empty($tables)) {
         // Jika tabel tidak ada, buat tabel
@@ -29,6 +34,8 @@ try {
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
             updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
         )");
+
+        logError("Table 'members' created successfully");
     }
 
     // Query dengan error handling
@@ -37,13 +44,16 @@ try {
         throw new Exception("Gagal membuat prepared statement");
     }
 
-    $stmt->execute();
+    if (!$stmt->execute()) {
+        throw new Exception("Gagal mengeksekusi query");
+    }
+
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    // Debug: Log jumlah data
-    error_log("Number of records found: " . count($result));
+    // Log jumlah data
+    logError("Number of records found: " . count($result));
 
-    // Tampilkan response
+    // Tampilkan response JSON
     echo json_encode([
         'draw' => isset($_GET['draw']) ? intval($_GET['draw']) : 1,
         'recordsTotal' => count($result),
@@ -57,33 +67,35 @@ try {
     ], JSON_PRETTY_PRINT);
 
 } catch (PDOException $e) {
-    error_log("PDO Error in data.php: " . $e->getMessage());
+    logError("PDO Error in data.php: " . $e->getMessage());
+    http_response_code(500);
     echo json_encode([
         'draw' => 1,
         'recordsTotal' => 0,
         'recordsFiltered' => 0,
         'data' => [],
-        'error' => $e->getMessage(),
+        'error' => 'Database error occurred',
         'debug' => [
             'error_type' => 'PDOException',
             'error_code' => $e->getCode(),
-            'error_file' => $e->getFile(),
-            'error_line' => $e->getLine()
+            'error_message' => $e->getMessage()
         ]
     ]);
+    exit;
 } catch (Exception $e) {
-    error_log("General Error in data.php: " . $e->getMessage());
+    logError("General Error in data.php: " . $e->getMessage());
+    http_response_code(500);
     echo json_encode([
         'draw' => 1,
         'recordsTotal' => 0,
         'recordsFiltered' => 0,
         'data' => [],
-        'error' => $e->getMessage(),
+        'error' => 'An error occurred',
         'debug' => [
             'error_type' => 'Exception',
             'error_code' => $e->getCode(),
-            'error_file' => $e->getFile(),
-            'error_line' => $e->getLine()
+            'error_message' => $e->getMessage()
         ]
     ]);
+    exit;
 }

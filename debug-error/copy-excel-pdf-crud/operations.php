@@ -9,7 +9,7 @@ header('Cache-Control: no-cache, must-revalidate');
 
 try {
     // Include database connection
-    require_once 'connects.php';
+    require_once 'connect-s.php';
 
     // Validasi request method
     $method = $_SERVER['REQUEST_METHOD'];
