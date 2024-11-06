@@ -20,7 +20,7 @@ include 'includes/header.php';
 
     <!-- Main Content -->
     <div class="container-fluid">
-        <h2>Avengers Members Management</h2>
+        <h2>Members Management</h2>
 
         <!-- Search Form -->
         <div class="row mb-3">
@@ -33,6 +33,7 @@ include 'includes/header.php';
             <div class="col-md-6 text-end">
                 <a href="add.php" class="btn btn-success">Add New Member</a>
                 <a href="import.php" class="btn btn-info ms-2">Import CSV</a>
+                <a href="export.php" class="btn btn-info ms-2">Export CSV</a>
             </div>
         </div>
 

@@ -45,3 +45,4 @@ function deleteMember($conn, $id) {
     $stmt = $conn->prepare("DELETE FROM members WHERE id = ?");
     return $stmt->execute([$id]);
 }
+?>
