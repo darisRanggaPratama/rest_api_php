@@ -5,6 +5,16 @@ ini_set('display_errors', 1);
 $rootPath = dirname(dirname(__FILE__));
 require_once $rootPath . '/config/database.php';
 
+// Handle single member request
+if(isset($_GET['id'])) {
+    $stmt = $pdo->prepare("SELECT * FROM members WHERE id = :id");
+    $stmt->execute(['id' => $_GET['id']]);
+    $member = $stmt->fetch(PDO::FETCH_ASSOC);
+    echo json_encode($member);
+    exit;
+}
+
+// Handle search request
 $search = isset($_GET['search']) ? $_GET['search'] : '';
 
 $sql = "SELECT * FROM members WHERE 

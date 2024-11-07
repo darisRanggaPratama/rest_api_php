@@ -5,12 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b24ee8b6-54cb-4889-963d-fb17a2bcb6a7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../bootstrap-crud/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bootstrap-crud/.idea/bootstrap-crud.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bootstrap-crud/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bootstrap-crud/.idea/php.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bootstrap-crud/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jquery-crud/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/../jquery-crud/js/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jquery-crud/php/read.php" beforeDir="false" afterPath="$PROJECT_DIR$/../jquery-crud/php/read.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +58,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1730952629312</updated>
-      <workItem from="1730952630402" duration="609000" />
+      <workItem from="1730952630402" duration="732000" />
     </task>
     <servers />
   </component>
