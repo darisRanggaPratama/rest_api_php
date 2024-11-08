@@ -1,9 +1,11 @@
+/* Main layout styles */
 .wrapper {
     display: flex;
     width: 100%;
     align-items: stretch;
 }
 
+/* Sidebar styles */
 #sidebar {
     min-width: 250px;
     max-width: 250px;
@@ -24,16 +26,10 @@
 
 #sidebar ul.components {
     padding: 20px 0;
-    border-bottom: 1px solid #47748b;
-}
-
-#sidebar ul p {
-    color: #fff;
-    padding: 10px;
 }
 
 #sidebar ul li a {
-    padding: 10px;
+    padding: 10px 20px;
     font-size: 1.1em;
     display: block;
     color: #fff;
@@ -41,13 +37,33 @@
 }
 
 #sidebar ul li a:hover {
-    color: #7386D5;
-    background: #fff;
+    background: #6d7fcc;
 }
 
+/* Content styles */
 #content {
     width: 100%;
     padding: 20px;
     min-height: 100vh;
     transition: all 0.3s;
+}
+
+/* Utility styles */
+.btn-space {
+    margin-right: 5px;
+}
+
+.table img {
+    max-width: 50px;
+    height: auto;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    #sidebar {
+        margin-left: -250px;
+    }
+    #sidebar.active {
+        margin-left: 0;
+    }
 }
