@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b24ee8b6-54cb-4889-963d-fb17a2bcb6a7" name="Changes" comment="" />
+    <list default="true" id="7eb5786b-e900-44e1-8e23-9e3943ce47ce" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../bootstrap-sidebar-crud-display-image-search/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../bootstrap-sidebar-crud-display-image-search/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,17 +20,23 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP" />
   <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 2
+  "associatedIndex": 1
 }]]></component>
-  <component name="ProjectId" id="2oVRCaucExmb5jvkcLUxpTZR2zG" />
+  <component name="ProjectId" id="2oVPYX6SAXl5iz8Q6BtSleRF6VN" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "C:/laragon/www/rest_api_php/rest-api-online/bootstrap-sidebar-crud-display-image-search",
@@ -50,16 +58,19 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="b24ee8b6-54cb-4889-963d-fb17a2bcb6a7" name="Changes" comment="" />
-      <created>1730952629312</created>
+      <changelist id="7eb5786b-e900-44e1-8e23-9e3943ce47ce" name="Changes" comment="" />
+      <created>1730951817169</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1730952629312</updated>
-      <workItem from="1730952630402" duration="1364000" />
+      <updated>1730951817169</updated>
+      <workItem from="1730951818230" duration="1301000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>
