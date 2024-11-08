@@ -21,6 +21,25 @@ $members = $member->getAll($search);
     <title>Avengers Members</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
+    <style>
+        /* Custom styles for table layout */
+        .table th.actions-header {
+            min-width: 100px; /* Menyesuaikan lebar kolom actions */
+        }
+        .edit-btn {
+            min-width: 60px; /* Lebar minimum untuk button edit */
+        }
+        .delete-btn {
+            min-width: 70px; /* Lebar minimum untuk button delete */
+        }
+        .table td {
+            vertical-align: middle; /* Vertically center all content */
+        }
+        .action-column {
+            text-align: center;
+            white-space: nowrap;
+        }
+    </style>
 </head>
 
 <body>
@@ -43,7 +62,7 @@ $members = $member->getAll($search);
             <div class="container-fluid mt-4">
                 <div class="d-flex justify-content-between align-items-center mb-3">
                     <h2 class="mb-0">Avengers Members</h2>
-                    <div class="d-flex gap-2"> <!-- Menggunakan gap-2 untuk spacing antar button -->
+                    <div class="d-flex gap-2">
                         <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addMemberModal">
                             Add New Member
                         </button>
@@ -74,7 +93,8 @@ $members = $member->getAll($search);
                                 <th>Image</th>
                                 <th>Release Date</th>
                                 <th>Summary</th>
-                                <th>Actions</th>
+                                <th class="actions-header">Edit</th>
+                                <th class="actions-header">Delete</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -85,8 +105,10 @@ $members = $member->getAll($search);
                                     <td><img src="<?php echo htmlspecialchars($row['image']); ?>" class="img-thumbnail" width="100"></td>
                                     <td><?php echo htmlspecialchars($row['release_at']); ?></td>
                                     <td><?php echo htmlspecialchars($row['summary']); ?></td>
-                                    <td>
+                                    <td class="action-column">
                                         <button class="btn btn-sm btn-warning edit-btn" data-id="<?php echo $row['id']; ?>">Edit</button>
+                                    </td>
+                                    <td class="action-column">
                                         <button class="btn btn-sm btn-danger delete-btn" data-id="<?php echo $row['id']; ?>">Delete</button>
                                     </td>
                                 </tr>
