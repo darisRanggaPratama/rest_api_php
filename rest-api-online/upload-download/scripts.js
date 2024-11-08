@@ -11,16 +11,16 @@ $(document).ready(function() {
         },
         columnDefs: [
             {
-                // Menonaktifkan pengurutan untuk kolom action
-                targets: [1, -1],
+                targets: [1, 6], // kolom Edit dan Delete
                 orderable: false
             }
         ],
         columns: [
+            { data: 'id' },
             { 
-                data: 'id',
-                render: function(data, type, row) {
-                    return `${data} <button class="btn btn-sm btn-warning ms-2" onclick="editMember(${data})">Edit</button>`;
+                data: null,
+                render: function(data) {
+                    return `<button class="btn btn-sm btn-warning" onclick="editMember(${data.id})">Edit</button>`;
                 }
             },
             { data: 'title' },
@@ -33,7 +33,6 @@ $(document).ready(function() {
             { data: 'release_at' },
             { data: 'summary' },
             {
-                // Kolom Delete tetap di akhir
                 data: null,
                 render: function(data) {
                     return `<button class="btn btn-sm btn-danger" onclick="deleteMember(${data.id})">Delete</button>`;
@@ -80,7 +79,6 @@ $(document).ready(function() {
     });
 });
 
-// Sisanya tetap sama
 function openAddModal() {
     document.getElementById('memberForm').reset();
     document.getElementById('memberId').value = '';
