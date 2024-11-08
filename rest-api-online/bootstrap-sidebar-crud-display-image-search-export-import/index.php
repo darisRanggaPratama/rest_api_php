@@ -21,25 +21,7 @@ $members = $member->getAll($search);
     <title>Avengers Members</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
-    <style>
-        /* Custom styles for table layout */
-        .table th.actions-header {
-            min-width: 100px; /* Menyesuaikan lebar kolom actions */
-        }
-        .edit-btn {
-            min-width: 60px; /* Lebar minimum untuk button edit */
-        }
-        .delete-btn {
-            min-width: 70px; /* Lebar minimum untuk button delete */
-        }
-        .table td {
-            vertical-align: middle; /* Vertically center all content */
-        }
-        .action-column {
-            text-align: center;
-            white-space: nowrap;
-        }
-    </style>
+    <link href="css/table.css" rel="stylesheet">
 </head>
 
 <body>
@@ -99,7 +81,7 @@ $members = $member->getAll($search);
                         </thead>
                         <tbody>
                             <?php foreach ($members as $row): ?>
-                                <tr>
+                                <tr data-id="<?php echo $row['id']; ?>">
                                     <td><?php echo htmlspecialchars($row['id']); ?></td>
                                     <td><?php echo htmlspecialchars($row['title']); ?></td>
                                     <td><img src="<?php echo htmlspecialchars($row['image']); ?>" class="img-thumbnail" width="100"></td>
@@ -126,6 +108,8 @@ $members = $member->getAll($search);
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/scripts.js"></script>
     <script src="js/csv-handlers.js"></script>
+    <!-- New JavaScript for row interaction -->
+    <script src="js/table.js"></script>
 </body>
 
 </html>
