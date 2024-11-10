@@ -5,6 +5,21 @@
     <div class="container mt-5">
         <h2 class="mb-4">Data Avengers</h2>
 
+        <div class="alert alert-info mb-3">
+            Klik baris untuk memilih data yang akan di-copy. Gunakan Ctrl/Cmd + klik untuk memilih multiple baris.
+        </div>
+        <table id="tabelData" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Image</th>
+                    <th>Release</th>
+                    <th>Summary</th>
+                </tr>
+            </thead>
+        </table>
+
         <!-- Upload Form -->
         <div class="card mb-4">
             <div class="card-header">
@@ -23,20 +38,6 @@
             </div>
         </div>
 
-        <div class="alert alert-info mb-3">
-            Klik baris untuk memilih data yang akan di-copy. Gunakan Ctrl/Cmd + klik untuk memilih multiple baris.
-        </div>
-        <table id="tabelData" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Title</th>
-                    <th>Image</th>
-                    <th>Release</th>
-                    <th>Summary</th>
-                </tr>
-            </thead>
-        </table>
     </div>
 </div>
 
