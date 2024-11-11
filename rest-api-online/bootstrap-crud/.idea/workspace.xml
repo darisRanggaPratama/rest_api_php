@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7eb5786b-e900-44e1-8e23-9e3943ce47ce" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../bootstrap-sidebar-crud-display-image-search/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../bootstrap-sidebar-crud-display-image-search/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="7eb5786b-e900-44e1-8e23-9e3943ce47ce" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -19,9 +17,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP" />
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 1
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectId" id="2oVPYX6SAXl5iz8Q6BtSleRF6VN" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -39,7 +37,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/laragon/www/rest_api_php/rest-api-online/bootstrap-sidebar-crud-display-image-search",
+    "last_opened_file_path": "C:/laragon/www/rest_api_php/rest-api-online/copy-excel-pdf-print/sidebar-imp-exp",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -64,6 +62,7 @@
       <option name="presentableId" value="Default" />
       <updated>1730951817169</updated>
       <workItem from="1730951818230" duration="1301000" />
+      <workItem from="1731313309510" duration="67000" />
     </task>
     <servers />
   </component>
