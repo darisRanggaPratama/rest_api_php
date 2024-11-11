@@ -42,13 +42,23 @@ $members = $member->getAll($search);
 
             <!-- Content -->
             <div class="container-fluid mt-4">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h2 class="mb-0">Avengers Members</h2>
-                    <div class="d-flex gap-2">
-                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addMemberModal">
+                <h2 class="mb-4">Avengers Members</h2>
+                
+                <!-- Search and Actions Row -->
+                <div class="row mb-4 align-items-center">
+                    <div class="col-md-6">
+                        <form>
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="search" placeholder="Search by title, date, or summary" value="<?php echo htmlspecialchars($search); ?>">
+                                <button class="btn btn-outline-secondary" type="submit">Search</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-md-6 text-md-end mt-3 mt-md-0">
+                        <button class="btn btn-primary me-2" data-bs-toggle="modal" data-bs-target="#addMemberModal">
                             Add New Member
                         </button>
-                        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#csvUploadModal">
+                        <button class="btn btn-success me-2" data-bs-toggle="modal" data-bs-target="#csvUploadModal">
                             Upload CSV
                         </button>
                         <a href="api/download-csv.php" class="btn btn-info text-white">
@@ -56,14 +66,6 @@ $members = $member->getAll($search);
                         </a>
                     </div>
                 </div>
-
-                <!-- Search Form -->
-                <form class="mb-4">
-                    <div class="input-group">
-                        <input type="text" class="form-control" name="search" placeholder="Search by title, date, or summary" value="<?php echo htmlspecialchars($search); ?>">
-                        <button class="btn btn-outline-secondary" type="submit">Search</button>
-                    </div>
-                </form>
 
                 <!-- Members Table -->
                 <div class="table-responsive">
@@ -108,7 +110,7 @@ $members = $member->getAll($search);
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/scripts.js"></script>
     <script src="js/csv-handlers.js"></script>
-    <!-- New JavaScript for row interaction -->
+      <!-- New JavaScript for row interaction -->
     <script src="js/table.js"></script>
 </body>
 
