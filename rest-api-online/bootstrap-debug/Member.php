@@ -2,7 +2,8 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-class Member {
+class Member
+{
     // Konstanta untuk nama tabel & pesan error
     protected const TABLE_NAME = "members";
     protected const ERROR_MESSAGES = [
@@ -22,7 +23,8 @@ class Member {
     protected $logger;
 
     // Constructor dengan dependency injection
-    public function __construct($db = null) {
+    public function __construct($db = null)
+    {
         if ($db === null) {
             throw new InvalidArgumentException(self::ERROR_MESSAGES['connection']);
         }
@@ -31,7 +33,8 @@ class Member {
     }
 
     // Singleton pattern implementation
-    public static function getInstance($db = null) {
+    public static function getInstance($db = null)
+    {
         if (self::$instance === null) {
             self::$instance = new self($db);
         }
@@ -39,8 +42,9 @@ class Member {
     }
 
     // Initialize logger
-    protected function initializeLogger() {
-        $this->logger = function($message, $level = 'error') {
+    protected function initializeLogger()
+    {
+        $this->logger = function ($message, $level = 'error') {
             $logFile = __DIR__ . '/logs/member_' . date('Y-m-d') . '.log';
             $timestamp = date('Y-m-d H:i:s');
             $logMessage = "[$timestamp][$level] $message" . PHP_EOL;
@@ -49,14 +53,16 @@ class Member {
     }
 
     // Validation methods
-    protected function validateId($id) {
+    protected function validateId($id)
+    {
         if (!is_numeric($id) || $id <= 0) {
             throw new InvalidArgumentException(self::ERROR_MESSAGES['invalid_id']);
         }
         return filter_var($id, FILTER_VALIDATE_INT);
     }
 
-    protected function validateData($data) {
+    protected function validateData($data)
+    {
         $required = ['title', 'release_at'];
         foreach ($required as $field) {
             if (empty($data[$field])) {
@@ -73,7 +79,8 @@ class Member {
     }
 
     // Enhanced getAll method with pagination and better error handling
-    public function getAll($search = '', $page = 1, $limit = 10) {
+    public function getAll($search = '', $page = 1, $limit = 10)
+    {
         try {
             $offset = ($page - 1) * $limit;
 
@@ -123,7 +130,8 @@ class Member {
     }
 
     // Enhanced getOne method
-    public function getOne($id) {
+    public function getOne($id)
+    {
         try {
             $id = $this->validateId($id);
 
@@ -150,7 +158,8 @@ class Member {
     }
 
     // Enhanced create method
-    public function create(array $data) {
+    public function create(array $data)
+    {
         try {
             $this->validateData($data);
 
@@ -182,7 +191,8 @@ class Member {
     }
 
     // Enhanced update method
-    public function update($id, array $data) {
+    public function update($id, array $data)
+    {
         try {
             $id = $this->validateId($id);
             $this->validateData($data);
@@ -223,7 +233,8 @@ class Member {
     }
 
     // Enhanced delete method
-    public function delete($id) {
+    public function delete($id)
+    {
         try {
             $id = $this->validateId($id);
 
@@ -251,23 +262,27 @@ class Member {
     }
 
     // Error handling methods
-    protected function logError($message) {
+    public function logError($message)
+    {
         if (is_callable($this->logger)) {
             call_user_func($this->logger, $message);
         }
         $this->lastError = $message;
     }
 
-    public function getLastError() {
+    public function getLastError()
+    {
         return $this->lastError;
     }
 
     // Getter methods
-    public function getConnection() {
+    public function getConnection()
+    {
         return $this->conn;
     }
 
-    public static function getTableName() {
+    public static function getTableName()
+    {
         return self::TABLE_NAME;
     }
 }
