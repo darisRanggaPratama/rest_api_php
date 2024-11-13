@@ -5,28 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b24ee8b6-54cb-4889-963d-fb17a2bcb6a7" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../bootstrap-sidebar-crud-search-export-import-display-image/.idea/bootstrap-sidebar-crud-display-image-search.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bootstrap-sidebar-crud-search-export-import-display-image/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bootstrap-sidebar-crud-search-export-import-display-image/.idea/php.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bootstrap-sidebar-crud-search-export-import-display-image/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bootstrap-sidebar-crud-search-export-import-display-image/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bootstrap-sidebar-crud-search-export-import-display-image/api/create.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bootstrap-sidebar-crud-search-export-import-display-image/api/delete.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bootstrap-sidebar-crud-search-export-import-display-image/api/download-csv.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bootstrap-sidebar-crud-search-export-import-display-image/api/read_one.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bootstrap-sidebar-crud-search-export-import-display-image/api/update.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bootstrap-sidebar-crud-search-export-import-display-image/api/upload-csv.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bootstrap-sidebar-crud-search-export-import-display-image/config/database.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bootstrap-sidebar-crud-search-export-import-display-image/css/styles.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bootstrap-sidebar-crud-search-export-import-display-image/css/table.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bootstrap-sidebar-crud-search-export-import-display-image/includes/csv-modal.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bootstrap-sidebar-crud-search-export-import-display-image/includes/modals.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bootstrap-sidebar-crud-search-export-import-display-image/includes/sidebar.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bootstrap-sidebar-crud-search-export-import-display-image/index.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bootstrap-sidebar-crud-search-export-import-display-image/js/csv-handlers.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bootstrap-sidebar-crud-search-export-import-display-image/js/scripts.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bootstrap-sidebar-crud-search-export-import-display-image/js/table.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bootstrap-sidebar-crud-search-export-import-display-image/models/Member.php" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/../bootstrap-sidebar-crud-search-export-import-display-image/.idea/php.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../bootstrap-sidebar-crud-search-export-import-display-image/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bootstrap-sidebar-crud-search-export-import-display-image/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../bootstrap-sidebar-crud-search-export-import-display-image/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,22 +38,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/laragon/www/rest_api_php/rest-api-online/bootstrap-final",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/laragon/www/rest_api_php/rest-api-online/bootstrap-final&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\laragon\www\rest_api_php\rest-api-online\bootstrap-sidebar-crud-search-export-import-display-image\debug" />
@@ -101,6 +83,8 @@
       <workItem from="1731239936592" duration="1999000" />
       <workItem from="1731459159813" duration="9325000" />
       <workItem from="1731479095064" duration="2640000" />
+      <workItem from="1731512924766" duration="7000" />
+      <workItem from="1731512955145" duration="3425000" />
     </task>
     <servers />
   </component>
