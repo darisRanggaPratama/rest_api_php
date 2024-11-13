@@ -10,6 +10,7 @@ $member = new Member($db);
 
 $search = isset($_GET['search']) ? $_GET['search'] : '';
 $members = $member->getAll($search);
+
 ?>
 
 <!DOCTYPE html>

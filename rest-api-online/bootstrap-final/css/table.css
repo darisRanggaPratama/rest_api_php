@@ -1,0 +1,43 @@
+/* Custom styles for table layout */
+.table th.actions-header {
+    min-width: 100px;
+}
+.edit-btn {
+    min-width: 60px;
+}
+.delete-btn {
+    min-width: 70px;
+}
+.table td {
+    vertical-align: middle;
+}
+.action-column {
+    text-align: center;
+    white-space: nowrap;
+}
+
+/* New styles for row highlighting */
+.table tbody tr {
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.table tbody tr:hover {
+    background-color: rgba(0, 123, 255, 0.1) !important;
+    transform: scale(1.002);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Style untuk efek klik */
+.table tbody tr.selected {
+    background-color: rgba(0, 123, 255, 0.2) !important;
+}
+
+/* Memastikan striped masih terlihat bagus dengan hover */
+.table-striped > tbody > tr:nth-of-type(odd) {
+    background-color: rgba(0,0,0,.02);
+}
+
+.table-striped > tbody > tr:nth-of-type(odd):hover {
+    background-color: rgba(0, 123, 255, 0.1) !important;
+}
