@@ -129,7 +129,27 @@ class Database {
             return false;
         }
     }
-}
 
+    public function dumpDie(...$vars)
+    {
+        foreach ($vars as $var) {
+            echo '<pre>';
+            var_dump($var); // Menampilkan informasi tentang variabel
+            echo '</pre>';
+        }
+        die(); // Menghentikan eksekusi skrip
+    }
+
+    public function printDie(...$vars)
+    {
+        foreach ($vars as $var) {
+            echo '<pre>';
+            print_r($var); // Menampilkan informasi tentang variabel
+            echo '</pre>';
+        }
+        die(); // Menghentikan eksekusi skrip
+
+    }
+}
 
 ?>

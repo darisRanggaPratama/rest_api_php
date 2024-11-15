@@ -190,45 +190,57 @@ class Member
         }
     }
 
-    // Enhanced update method
+
     public function update($id, array $data)
     {
         try {
             $id = $this->validateId($id);
-            $this->validateData($data);
+
+            // Modifikasi validasi data untuk mengizinkan beberapa field opsional
+            if (empty($data['title'])) {
+                throw new InvalidArgumentException("Title is required");
+            }
+
+            if (empty($data['release_at']) || !strtotime($data['release_at'])) {
+                throw new InvalidArgumentException("Valid release date is required");
+            }
 
             // Check if record exists
-            if (!$this->getOne($id)) {
+            $existingMember = $this->getOne($id);
+            if (!$existingMember) {
                 throw new RuntimeException(self::ERROR_MESSAGES['not_found']);
             }
 
             $query = "UPDATE " . self::TABLE_NAME . "
-                     SET title = :title, image = :image, 
-                         release_at = :release_at, summary = :summary,
-                         updated_at = CURRENT_TIMESTAMP
-                     WHERE id = :id";
+                 SET title = :title, 
+                     image = :image, 
+                     release_at = :release_at, 
+                     summary = :summary
+                    
+                 WHERE id = :id";
 
             $stmt = $this->conn->prepare($query);
 
             // Sanitize and bind all parameters
-            foreach (['title', 'image', 'release_at', 'summary'] as $field) {
-                $value = isset($data[$field]) ?
-                    htmlspecialchars(strip_tags($data[$field])) : null;
-                $stmt->bindValue(":{$field}", $value);
-            }
-            $stmt->bindParam(":id", $id, PDO::PARAM_INT);
+            $stmt->bindValue(":title", htmlspecialchars(strip_tags($data['title'])));
+            $stmt->bindValue(":image", isset($data['image']) ? htmlspecialchars(strip_tags($data['image'])) : '');
+            $stmt->bindValue(":release_at", date('Y-m-d', strtotime($data['release_at'])));
+            $stmt->bindValue(":summary", isset($data['summary']) ? htmlspecialchars(strip_tags($data['summary'])) : '');
+            $stmt->bindValue(":id", $id, PDO::PARAM_INT);
 
-            $result = $stmt->execute();
-
-            if (!$result) {
-                throw new RuntimeException(self::ERROR_MESSAGES['update_failed']);
+            if (!$stmt->execute()) {
+                $errorInfo = $stmt->errorInfo();
+                throw new RuntimeException("Database error: " . ($errorInfo[2] ?? self::ERROR_MESSAGES['update_failed']));
             }
 
             return true;
 
         } catch (PDOException $e) {
             $this->logError('Update failed: ' . $e->getMessage());
-            throw new RuntimeException(self::ERROR_MESSAGES['update_failed']);
+            throw new RuntimeException(self::ERROR_MESSAGES['update_failed'] . ': ' . $e->getMessage());
+        } catch (Exception $e) {
+            $this->logError('Update failed: ' . $e->getMessage());
+            throw new RuntimeException($e->getMessage());
         }
     }
 

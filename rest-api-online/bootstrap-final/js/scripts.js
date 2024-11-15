@@ -66,10 +66,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.error('Error:', error);
                 alert('Error loading member data: ' + error.message);
             });
-    });
-
-
-    
+    });    
 });
 
 // Edit Member Form Submit
@@ -108,7 +105,6 @@ document.getElementById('editMemberForm').addEventListener('submit', function(e)
         alert('Error updating member: ' + error.message);
     });
 });
-
 
     // Delete Member Button Click
     document.querySelectorAll('.delete-btn').forEach(button => {

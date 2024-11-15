@@ -45,9 +45,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Log untuk debugging
             console.log('Fetching member data for ID:', id);
-            console.log('API URL:', `api/read_one.php?id=${id}`);
+            console.log('API URL:', `read_one.php?id=${id}`);
 
-            fetch(`api/read_one.php?id=${id}`)
+            fetch(`read_one.php?id=${id}`)
                 .then(response => {
                     if (!response.ok) {
                         throw new Error(`HTTP error! status: ${response.status}`);
@@ -79,7 +79,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
         });
 
-
     });
 
 // Edit Member Form Submit
@@ -91,34 +90,72 @@ document.addEventListener('DOMContentLoaded', function () {
             formObject[key] = value;
         });
 
-        fetch('api/update.php', {
+        // Get CSRF token from meta tag
+        const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
+        fetch('update.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'X-CSRF-Token': csrfToken,
+                'Accept': 'application/json'
             },
-            body: JSON.stringify(formObject)
-        })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                return response.json();
+            body: JSON.stringify({
+                id: formObject.id,
+                title: formObject.title,
+                image: formObject.image,
+                release_at: formObject.release_at,
+                summary: formObject.summary
             })
+        })
+            .then(response => response.json())
             .then(data => {
                 if (data.success) {
+                    // Show success message
+                    showNotification('success', data.message || 'Member updated successfully');
+
+                    // Hide modal
                     const modal = bootstrap.Modal.getInstance(document.getElementById('editMemberModal'));
-                    modal.hide();
-                    location.reload();
+                    if (modal) {
+                        modal.hide();
+                    }
+
+                    // Reload after short delay to show success message
+                    setTimeout(() => {
+                        location.reload();
+                    }, 1000);
                 } else {
-                    throw new Error(data.error || 'Failed to update member');
+                    throw new Error(data.message || 'Failed to update member');
                 }
             })
             .catch(error => {
                 console.error('Error:', error);
-                alert('Error updating member: ' + error.message);
+                showNotification('error', error.message || 'An error occurred while updating the member');
             });
     });
 
+// Add notification function if not already present
+    function showNotification(type, message) {
+        const alertDiv = document.createElement('div');
+        alertDiv.className = `alert alert-${type === 'success' ? 'success' : 'danger'} alert-dismissible fade show`;
+        alertDiv.innerHTML = `
+        ${message}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    `;
+
+        // Insert at the top of the container
+        const container = document.querySelector('.container-fluid');
+        container.insertBefore(alertDiv, container.firstChild);
+
+        // Auto dismiss after 5 seconds
+        setTimeout(() => {
+            alertDiv.remove();
+        }, 5000);
+    }
+
+    function getCsrfToken() {
+        return document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+    }
 
     // Delete Member Button Click
     document.querySelectorAll('.delete-btn').forEach(button => {
@@ -126,24 +163,54 @@ document.addEventListener('DOMContentLoaded', function () {
             if (confirm('Are you sure you want to delete this member?')) {
                 const id = this.getAttribute('data-id');
 
-                fetch(`api/delete.php?id=${id}`, {
-                    method: 'DELETE'
+                fetch(`delete.php?id=${id}`, {
+                    method: 'DELETE',
+                    headers: {
+                        // Implement this function
+                        'X-CSRF-Token': getCsrfToken(),
+                        'Content-Type': 'application/json'
+                    }
                 })
                     .then(response => response.json())
                     .then(data => {
                         if (data.success) {
-                            location.reload();
+                            // Remove row from table
+                            const row = document.querySelector(`tr[data-id="${id}"]`);
+                            if (row) row.remove();
+
+                            // Show success Message
+                            showNotification('success', 'Member deleted successfully');
+                            setTimeout(() => {
+                                location.reload();
+                            }, 1000);
                         } else {
-                            alert('Error deleting member');
+                            alert(data.error || 'Error deleting member');
                         }
                     })
                     .catch(error => {
                         console.error('Error:', error);
-                        alert('An error occurred while deleting member');
+                        showNotification('error', error.message || 'An error occurred while deleting number');
                     });
             }
         });
     });
+
+    // Helper function untuk notification
+    function showNotification(type, message) {
+        const alertDiv = document.createElement('div');
+        alertDiv.className = `alert alert-${type === 'success' ? 'success' : 'danger'} alert-dismissible fade show`;
+        alertDiv.innerHTML = `
+        ${message}
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        `;
+
+        document.querySelector('.container-fluid').insertAdjacentElement('afterbegin', alertDiv);
+
+        // Auto dismiss after 5 seconds
+        setTimeout(() => {
+            alertDiv.remove();
+        }, 5000);
+    }
 
     // Search functionality
     const searchForm = document.querySelector('form');
