@@ -108,7 +108,7 @@ try {
                     <button class="btn btn-success me-2" data-bs-toggle="modal" data-bs-target="#csvUploadModal">
                         Upload CSV
                     </button>
-                    <a href="api/download-csv.php" class="btn btn-info text-white">
+                    <a href="download-csv.php" class="btn btn-info text-white">
                         Download CSV
                     </a>
                 </div>

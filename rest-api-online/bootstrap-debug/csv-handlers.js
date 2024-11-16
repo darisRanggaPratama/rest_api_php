@@ -5,41 +5,41 @@ document.addEventListener('DOMContentLoaded', function() {
     if (csvUploadForm) {
         csvUploadForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            
+
             const formData = new FormData(this);
-            
+
             // Show loading state
             const submitBtn = this.querySelector('button[type="submit"]');
             const originalText = submitBtn.innerHTML;
             submitBtn.disabled = true;
             submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Uploading...';
-            
-            fetch('api/upload-csv.php', {
+
+            fetch('upload-csv.php', {
                 method: 'POST',
                 body: formData
             })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    alert(data.message);
-                    if (data.errors && data.errors.length > 0) {
-                        console.log('Upload errors:', data.errors);
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert(data.message);
+                        if (data.errors && data.errors.length > 0) {
+                            console.log('Upload errors:', data.errors);
+                        }
+                        location.reload();
+                    } else {
+                        alert('Error: ' + data.message);
                     }
-                    location.reload();
-                } else {
-                    alert('Error: ' + data.message);
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('An error occurred while uploading the CSV file');
-            })
-            .finally(() => {
-                // Reset button state
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = originalText;
-                csvUploadForm.reset();
-            });
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('An error occurred while uploading the CSV file');
+                })
+                .finally(() => {
+                    // Reset button state
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalText;
+                    csvUploadForm.reset();
+                });
         });
     }
 
