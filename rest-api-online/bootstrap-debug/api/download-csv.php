@@ -1,6 +1,6 @@
 <?php
-require_once 'check-db.php';
-require_once 'Member.php';
+require_once '../config/check-db.php';
+require_once '../models/Member.php';
 
 class CSVDownloader {
     private $db;
@@ -78,7 +78,7 @@ class CSVDownloader {
         }
 
         // Add UTF-8 BOM for Excel compatibility
-        fprintf($output, chr(0xEF).chr(0xBB).chr(0xBF));
+        fprintf($output, "" . chr(0xEF) . chr(0xBB) .chr(0xBF));
 
         // Write headers
         if (fputcsv($output, self::CSV_HEADERS, ';') === false) {

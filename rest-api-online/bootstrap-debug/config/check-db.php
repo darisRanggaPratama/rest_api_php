@@ -4,7 +4,7 @@ ini_set('display_errors', 1);
 
 class Database {
     // Konstanta untuk konfigurasi database
-    private const CONFIG_FILE = 'database.php';
+    private const CONFIG_FILE = __DIR__ . '/database.php';
 
     // Properties dengan visibility protected agar bisa diakses class turunan
     protected static $instance = null;

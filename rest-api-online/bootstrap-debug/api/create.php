@@ -4,8 +4,8 @@ header('Content-Type: application/json');
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-require_once 'check-db.php';
-require_once 'Member.php';
+require_once '../config/check-db.php';
+require_once '../models/Member.php';
 
 $database = Database::getInstance();
 $db = $database->getConnection();

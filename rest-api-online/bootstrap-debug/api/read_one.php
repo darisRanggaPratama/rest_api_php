@@ -54,14 +54,14 @@ try {
     }
 
     // Check if required files exist
-    foreach (['check-db.php', 'Member.php'] as $file) {
+    foreach (['../config/check-db.php', '../models/Member.php'] as $file) {
         if (!file_exists($file)) {
             throw new Exception("Required file $file not found", 500);
         }
     }
 
-    require_once 'check-db.php';
-    require_once 'Member.php';
+    require_once '../config/check-db.php';
+    require_once '../models/Member.php';
 
     // Validate and sanitize input
     if (!isset($_GET['id'])) {

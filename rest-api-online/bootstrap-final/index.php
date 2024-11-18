@@ -1,6 +1,7 @@
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
+
 require_once 'config/database.php';
 require_once 'models/Member.php';
 
@@ -10,7 +11,6 @@ $member = new Member($db);
 
 $search = isset($_GET['search']) ? $_GET['search'] : '';
 $members = $member->getAll($search);
-
 ?>
 
 <!DOCTYPE html>
@@ -44,13 +44,15 @@ $members = $member->getAll($search);
             <!-- Content -->
             <div class="container-fluid mt-4">
                 <h2 class="mb-4">Avengers Members</h2>
-                
+
                 <!-- Search and Actions Row -->
                 <div class="row mb-4 align-items-center">
                     <div class="col-md-6">
                         <form>
                             <div class="input-group">
-                                <input type="text" class="form-control" name="search" placeholder="Search by title, date, or summary" value="<?php echo htmlspecialchars($search); ?>">
+                                <input type="text" class="form-control" name="search"
+                                    placeholder="Search by title, date, or summary"
+                                    value="<?php echo htmlspecialchars($search); ?>">
                                 <button class="btn btn-outline-secondary" type="submit">Search</button>
                             </div>
                         </form>
@@ -87,14 +89,17 @@ $members = $member->getAll($search);
                                 <tr data-id="<?php echo $row['id']; ?>">
                                     <td><?php echo htmlspecialchars($row['id']); ?></td>
                                     <td><?php echo htmlspecialchars($row['title']); ?></td>
-                                    <td><img src="<?php echo htmlspecialchars($row['image']); ?>" class="img-thumbnail" width="100"></td>
+                                    <td><img src="<?php echo htmlspecialchars($row['image']); ?>" class="img-thumbnail"
+                                            width="100"></td>
                                     <td><?php echo htmlspecialchars($row['release_at']); ?></td>
                                     <td><?php echo htmlspecialchars($row['summary']); ?></td>
                                     <td class="action-column">
-                                        <button class="btn btn-sm btn-warning edit-btn" data-id="<?php echo $row['id']; ?>">Edit</button>
+                                        <button class="btn btn-sm btn-warning edit-btn"
+                                            data-id="<?php echo $row['id']; ?>">Edit</button>
                                     </td>
                                     <td class="action-column">
-                                        <button class="btn btn-sm btn-danger delete-btn" data-id="<?php echo $row['id']; ?>">Delete</button>
+                                        <button class="btn btn-sm btn-danger delete-btn"
+                                            data-id="<?php echo $row['id']; ?>">Delete</button>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
@@ -111,7 +116,7 @@ $members = $member->getAll($search);
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/scripts.js"></script>
     <script src="js/csv-handlers.js"></script>
-      <!-- New JavaScript for row interaction -->
+    <!-- New JavaScript for row interaction -->
     <script src="js/table.js"></script>
 </body>
 

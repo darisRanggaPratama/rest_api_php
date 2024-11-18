@@ -82,31 +82,57 @@ class Member
     public function getAll($search = '', $page = 1, $limit = 10)
     {
         try {
-            $offset = ($page - 1) * $limit;
+            // Handle 'all' case
+            if ($limit === PHP_INT_MAX) {
+                $offset = 0;
+            } else {
+                $offset = ($page - 1) * $limit;
+            }
+
+            $params = [];
+            $conditions = [];
 
             // Base query
             $query = "SELECT SQL_CALC_FOUND_ROWS * FROM " . self::TABLE_NAME;
 
             // Add search condition if provided
             if (!empty($search)) {
-                $query .= " WHERE title LIKE :search 
-                           OR release_at LIKE :search 
-                           OR summary LIKE :search";
+                $conditions[] = "title LIKE :search_title";
+                $conditions[] = "DATE_FORMAT(release_at, '%Y-%m-%d') LIKE :search_date1";
+                $conditions[] = "DATE_FORMAT(release_at, '%d-%m-%Y') LIKE :search_date2";
+                $conditions[] = "DATE_FORMAT(release_at, '%d/%m/%Y') LIKE :search_date3";
+                $conditions[] = "DATE_FORMAT(release_at, '%m/%d/%Y') LIKE :search_date4";
+                $conditions[] = "summary LIKE :search_summary";
+
+                $searchTerm = "%$search%";
+                $params[':search_title'] = $searchTerm;
+                $params[':search_date1'] = $searchTerm;
+                $params[':search_date2'] = $searchTerm;
+                $params[':search_date3'] = $searchTerm;
+                $params[':search_date4'] = $searchTerm;
+                $params[':search_summary'] = $searchTerm;
+            }
+
+            // Add WHERE close if condition exist
+            if (!empty($conditions)) {
+                $query .= ' WHERE ' . implode(' OR ', $conditions);
             }
 
             // Add pagination
             $query .= " ORDER BY id DESC LIMIT :limit OFFSET :offset";
+            $params['limit'] = (int)$limit;
+            $params['offset'] = (int)$offset;
 
             $stmt = $this->conn->prepare($query);
 
-            // Bind parameters
-            if (!empty($search)) {
-                $searchTerm = "%{$search}%";
-                $stmt->bindParam(":search", $searchTerm, PDO::PARAM_STR);
+            // Bind all parameters
+            foreach ($params as $key => $value) {
+                if ($key === ':limit' || $key === ':offset') {
+                    $stmt->bindValue($key, $value, PDO::PARAM_INT);
+                } else {
+                    $stmt->bindValue($key, $value, PDO::PARAM_STR);
+                }
             }
-
-            $stmt->bindParam(":limit", $limit, PDO::PARAM_INT);
-            $stmt->bindParam(":offset", $offset, PDO::PARAM_INT);
 
             $stmt->execute();
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -114,6 +140,9 @@ class Member
             // Get total count
             $totalStmt = $this->conn->query("SELECT FOUND_ROWS()");
             $total = $totalStmt->fetchColumn();
+
+            // Calculate total pages (handle 'all" case
+            $totalPages = ($limit === PHP_INT_MAX) ? 1 :  ceil($total / $limit);
 
             return [
                 'data' => $results,
@@ -190,86 +219,40 @@ class Member
         }
     }
 
-
-    public function update($id, array $data)
+    public function update(array $data)
     {
         try {
-            $id = $this->validateId($id);
-
-            // Modifikasi validasi data untuk mengizinkan beberapa field opsional
-            if (empty($data['title'])) {
-                throw new InvalidArgumentException("Title is required");
-            }
-
-            if (empty($data['release_at']) || !strtotime($data['release_at'])) {
-                throw new InvalidArgumentException("Valid release date is required");
-            }
-
-            // Check if record exists
-            $existingMember = $this->getOne($id);
-            if (!$existingMember) {
-                throw new RuntimeException(self::ERROR_MESSAGES['not_found']);
-            }
+            $id = $this->validateId($data['id']);
+            $this->validateData($data);
 
             $query = "UPDATE " . self::TABLE_NAME . "
-                 SET title = :title, 
-                     image = :image, 
-                     release_at = :release_at, 
+                 SET title = :title,
+                     image = :image,
+                     release_at = :release_at,
                      summary = :summary
-                    
                  WHERE id = :id";
 
             $stmt = $this->conn->prepare($query);
 
             // Sanitize and bind all parameters
-            $stmt->bindValue(":title", htmlspecialchars(strip_tags($data['title'])));
-            $stmt->bindValue(":image", isset($data['image']) ? htmlspecialchars(strip_tags($data['image'])) : '');
-            $stmt->bindValue(":release_at", date('Y-m-d', strtotime($data['release_at'])));
-            $stmt->bindValue(":summary", isset($data['summary']) ? htmlspecialchars(strip_tags($data['summary'])) : '');
+            foreach (['title', 'image', 'release_at', 'summary'] as $field) {
+                $value = isset($data[$field]) ?
+                    htmlspecialchars(strip_tags($data[$field])) : null;
+                $stmt->bindValue(":{$field}", $value);
+            }
             $stmt->bindValue(":id", $id, PDO::PARAM_INT);
-
-            if (!$stmt->execute()) {
-                $errorInfo = $stmt->errorInfo();
-                throw new RuntimeException("Database error: " . ($errorInfo[2] ?? self::ERROR_MESSAGES['update_failed']));
-            }
-
-            return true;
-
-        } catch (PDOException $e) {
-            $this->logError('Update failed: ' . $e->getMessage());
-            throw new RuntimeException(self::ERROR_MESSAGES['update_failed'] . ': ' . $e->getMessage());
-        } catch (Exception $e) {
-            $this->logError('Update failed: ' . $e->getMessage());
-            throw new RuntimeException($e->getMessage());
-        }
-    }
-
-    // Enhanced delete method
-    public function delete($id)
-    {
-        try {
-            $id = $this->validateId($id);
-
-            // Check if record exists
-            if (!$this->getOne($id)) {
-                throw new RuntimeException(self::ERROR_MESSAGES['not_found']);
-            }
-
-            $query = "DELETE FROM " . self::TABLE_NAME . " WHERE id = :id";
-            $stmt = $this->conn->prepare($query);
-            $stmt->bindParam(":id", $id, PDO::PARAM_INT);
 
             $result = $stmt->execute();
 
             if (!$result) {
-                throw new RuntimeException(self::ERROR_MESSAGES['delete_failed']);
+                throw new RuntimeException(self::ERROR_MESSAGES['update_failed']);
             }
 
             return true;
 
         } catch (PDOException $e) {
-            $this->logError('Delete failed: ' . $e->getMessage());
-            throw new RuntimeException(self::ERROR_MESSAGES['delete_failed']);
+            $this->logError('Update failed: ' . $e->getMessage());
+            throw new RuntimeException(self::ERROR_MESSAGES['update_failed']);
         }
     }
 
